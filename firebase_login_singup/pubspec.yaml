@@ -3,13 +3,24 @@ description: A new Flutter package project.
 version: 0.0.1
 homepage:
 
+publish_to: 'none'
+
 environment:
   sdk: '>=2.19.2 <3.0.0'
   flutter: ">=1.17.0"
 
+  
+
 dependencies:
   flutter:
     sdk: flutter
+
+  firebase_auth: 4.2.1
+  flutter_modular: ^5.0.3
+  design_system:
+    git:
+      url: https://github.com/caiobraga/packages.git
+      path: design_system
 
 dev_dependencies:
   flutter_test:

@@ -3,22 +3,20 @@ import 'package:flutter/material.dart';
 
 import 'login_controller.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+
+class VerifyCodePage extends StatefulWidget {
+  const VerifyCodePage({Key? key}) : super(key: key);
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<VerifyCodePage> createState() => _VerifyCodePageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
-  
+class _VerifyCodePageState extends State<VerifyCodePage> {
   String messageErro = '';
   bool isLoading = false;
   LoginController controller = LoginController();
-
   @override
   Widget build(BuildContext context) {
-   
     return Scaffold(
       backgroundColor: AppColors.primaryColor,
       body: SafeArea(
@@ -69,19 +67,7 @@ class _LoginPageState extends State<LoginPage> {
                       const SizedBox(
                         height: 16.0,
                       ),
-                      Row(children: [
-                        Container(
-                          child: Text("+55"),
-                          margin: const EdgeInsets.all(4),
-                          padding: const EdgeInsets.all(8),
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(8))
-                        )
-                        ,
-                        Expanded(
-                          
-                          child:  TextField(
+                      TextField(
                         keyboardType: TextInputType.phone,
                         decoration: InputDecoration(
                             border: const OutlineInputBorder(
@@ -95,17 +81,13 @@ class _LoginPageState extends State<LoginPage> {
                               color: AppColors.primaryColor,
                             ),
                             hintStyle: TextStyle(color: Colors.grey[800]),
-                            hintText: "Insira seu número de telefone",
+                            hintText: "Insira o código recebido",
                             fillColor: Colors.white70),
                         onChanged: (value) {
                           // _loginStore.phoneNumber = value;
-                          controller.setPhone(value);
+                          controller.setcode(value);
                         },
                       ),
-                        ),
-                     
-                      ],),
-                      
                       const SizedBox(
                         height: 24.0,
                       ),
@@ -113,14 +95,14 @@ class _LoginPageState extends State<LoginPage> {
                         children: [
                           Expanded(
                             child: InkWell(
-                              onTap: login,
+                              onTap: verifyCode,
                               child: Container(
                                 alignment: Alignment.center,
                                 padding: const EdgeInsets.all(16),
                                 decoration: BoxDecoration(
                                     color: AppColors.primaryColor,
                                     borderRadius: BorderRadius.circular(16)),
-                                child:  isLoading
+                                child: isLoading
                                     ? const CircularProgressIndicator(
                                         color: AppColors.whiteColor,
                                       )
@@ -155,24 +137,22 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  
 
-  Future<void> login() async {
+Future<void> verifyCode() async {
     final controller = LoginController();
     setState(() {
       isLoading = true;
       messageErro = '';
     });
     try {
-      await controller.login();
-      
+      await controller.verifyCode();
     } catch (e) {
       messageErro = e.toString();
-      setState(() {
-     isLoading = false; 
-    });
     }
 
-    
+    setState(() {
+     isLoading = false; 
+    });
   }
+  
 }

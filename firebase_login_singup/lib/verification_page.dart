@@ -1,14 +1,12 @@
+import 'package:firebase_login_singup/verifyAuth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:vetners/pages/historic_page.dart';
-import 'package:vetners/pages/notification_page.dart';
-import 'package:vetners/pages/pets_page/pets_page.dart';
-import 'package:vetners/pages/stores_page.dart';
-import 'package:vetners/shared/design_system.dart';
-import 'package:vetners/utils/verifyAuth.dart';
+import 'package:design_system/vetner/design_system.dart';
+
 
 class VerificationPage extends VerifyAuth {
-  VerificationPage({Key? key});
+  String appName;
+  Function(String uid) onComplete ;
+  VerificationPage({Key? key, required this.appName, required this.onComplete}) : super(key: key, onComplete: onComplete);
 
   @override
   State<VerificationPage> createState() => _VerificationPageState();
@@ -31,9 +29,9 @@ class _VerificationPageState extends State<VerificationPage>
           hasIcon: false,
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
+            children:  [
               Text(
-                "Vetners",
+                widget.appName,
                 style: TextStyle(
                     fontSize: AppFonts.titleShortcuts,
                     color: AppColors.blackColor),
