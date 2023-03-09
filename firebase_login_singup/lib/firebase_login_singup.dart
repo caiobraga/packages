@@ -14,22 +14,27 @@ import 'verify_code_page.dart';
 
 
 
-class FirebaseLoginSingup extends StatelessWidget {
+class FirebaseLoginSingup extends Module {
   String authType;
   String appName;
   Function(String uid) onComplete ;
   FirebaseLoginSingup({ this.authType = AuthTypes.phone, required this.appName, required this.onComplete});
 
   @override
-  Widget build(BuildContext context) {
-    return ModularApp(module: AppModule(appName: appName, onComplete: onComplete, authType: authType), child: MaterialApp.router(
-      title: appName,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      routeInformationParser: Modular.routeInformationParser,
-      routerDelegate: Modular.routerDelegate,
-    ) ,) ;
-  }
+  List<Bind> get binds => [
+    
+  ];
+
+  @override
+  List<ModularRoute> get routes => [
+        ChildRoute('/', child: (context, args) => AuthPage( authType: authType, appName: appName, onComplete: onComplete), 
+    children: [
+     ChildRoute('/codeVerify',
+            child: (context, args) => const VerifyCodePage()),
+     ChildRoute('/verificationPage',
+            child: (context, args) => VerificationPage(appName: appName, onComplete: onComplete,)),
+    ]),
+       
+      ];
 }
 
