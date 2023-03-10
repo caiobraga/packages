@@ -5,7 +5,6 @@ import 'package:firebase_login_singup/verification_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
-import 'app_module.dart';
 import 'auth_page.dart';
 import 'auth_types.dart';
 import 'login_page.dart';
