@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 
 
 class AppDesignSystem {
+  String appName;
   Colors appColors;
   Fonts appFonts;
   AppImages appImages;
   
 
-  AppDesignSystem({required this.appColors, required this.appFonts, required this.appImages});
+  AppDesignSystem({required this.appColors, required this.appFonts, required this.appImages, required this.appName});
 }
 
 class Colors {
