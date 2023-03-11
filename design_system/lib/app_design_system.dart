@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 
-export class AppDesignSystem {
+class AppDesignSystem {
   String appName;
   Colors appColors;
   Fonts appFonts;
@@ -11,7 +11,7 @@ export class AppDesignSystem {
   AppDesignSystem({required this.appColors, required this.appFonts, required this.appImages, required this.appName});
 }
 
-export class Colors {
+class Colors {
   Color primaryColor;
   Color secondary ;
   Color tertiary ;
@@ -28,7 +28,7 @@ export class Colors {
   Colors({required this.primaryColor, required this.secondary, required this.tertiary, required this.whiteColor, required this.blackColor, required this.textButtonColor, required this.cardColor, required this.iconColor, required this.scaffoldBackground});
 }
 
-export class Fonts{
+class Fonts{
   double titleFont;
   double titleShortcuts;
   double subtitle;
