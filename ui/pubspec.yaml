@@ -16,6 +16,18 @@ dev_dependencies:
     sdk: flutter
   flutter_lints: ^2.0.0
 
+  flutter_modular: ^5.0.3
+
+  design_system:
+    git:
+      url: https://github.com/caiobraga/packages.git
+      path: design_system
+
+  core:
+    git:
+      url: https://github.com/caiobraga/packages.git
+      path: core
+
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
