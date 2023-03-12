@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 
 class AppDesignSystem {
   String appName;
-  Colors appColors;
+  AppColors appColors;
   Fonts appFonts;
   AppImages appImages;
   
@@ -11,7 +12,7 @@ class AppDesignSystem {
   AppDesignSystem({required this.appColors, required this.appFonts, required this.appImages, required this.appName});
 }
 
-class Colors {
+class AppColors {
   Color primaryColor;
   Color secondary ;
   Color tertiary ;
@@ -25,7 +26,7 @@ class Colors {
   Color iconColor ;
   Color scaffoldBackground ;
 
-  Colors({required this.primaryColor, required this.secondary, required this.tertiary, required this.whiteColor, required this.blackColor, required this.textButtonColor, required this.cardColor, required this.iconColor, required this.scaffoldBackground});
+  AppColors({required this.primaryColor, required this.secondary, required this.tertiary, required this.whiteColor, required this.blackColor, required this.textButtonColor, required this.cardColor, required this.iconColor, required this.scaffoldBackground});
 }
 
 class Fonts{
@@ -43,14 +44,15 @@ class AppImages{
   AppImages({required this.logoUrl});
 }
 
-/*
+
 
 class AppComponents {
   static AppBar appBar(Widget title, BuildContext context, {bool hasIcon = true, bool automaticallyImplyLeading = true, IconButton? iconButton} ) {
+    final appDesign = Modular.get<AppDesignSystem>();
     return AppBar(
       automaticallyImplyLeading: automaticallyImplyLeading,
       centerTitle: true,
-      backgroundColor: Colors.white,
+      backgroundColor: appDesign.appColors.whiteColor,
       elevation: 0,
       title: title,
       actions: [
@@ -58,9 +60,8 @@ class AppComponents {
         iconButton!= null? iconButton : Container() :
             Text(""),
       ],
-      foregroundColor: Colors.black,
+      foregroundColor: appDesign.appColors.blackColor,
     );
   }
 }
 
-*/
