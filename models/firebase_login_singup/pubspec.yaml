@@ -17,6 +17,7 @@ dependencies:
 
   firebase_auth: 4.2.1
   flutter_modular: ^5.0.3
+
   design_system:
     git:
       url: https://github.com/caiobraga/packages.git
