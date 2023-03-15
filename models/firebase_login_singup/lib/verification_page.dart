@@ -1,12 +1,12 @@
-import 'package:firebase_login_singup/verifyAuth.dart';
 import 'package:flutter/material.dart';
-import 'package:design_system/vetner/design_system.dart';
-
+import 'package:design_system/design_system.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+import './verifyAuth.dart';
+import 'firebaseLoginSingup_module.dart';
 
 class VerificationPage extends VerifyAuth {
-  String appName;
-  Function(String uid) onComplete ;
-  VerificationPage({Key? key, required this.appName, required this.onComplete}) : super(key: key, onComplete: onComplete);
+  
+  VerificationPage({Key? key}) : super(key: key);
 
   @override
   State<VerificationPage> createState() => _VerificationPageState();
@@ -24,6 +24,8 @@ class _VerificationPageState extends State<VerificationPage>
 
   @override
   Widget build(BuildContext context) {
+    final viewModel = Modular.get<FirebaseLoginSingupViewModel>();
+    final appDesign = Modular.get<AppDesignSystem>();
     return Scaffold(
       appBar: AppComponents.appBar(
           hasIcon: false,
@@ -31,16 +33,16 @@ class _VerificationPageState extends State<VerificationPage>
             mainAxisAlignment: MainAxisAlignment.center,
             children:  [
               Text(
-                widget.appName,
+                viewModel.appName,
                 style: TextStyle(
-                    fontSize: AppFonts.titleShortcuts,
-                    color: AppColors.blackColor),
+                    fontSize: appDesign.appFonts.titleShortcuts,
+                    color: appDesign.appColors.blackColor),
                 textAlign: TextAlign.center,
               ),
             ],
           ),
           context),
-      backgroundColor: AppColors.whiteColor,
+      backgroundColor: appDesign.appColors.whiteColor,
       body: SafeArea(
           child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -70,15 +72,15 @@ class _VerificationPageState extends State<VerificationPage>
             children: [
 Padding(
             padding: EdgeInsets.only(left: 10),
-            child: Icon(Icons.pets, color: AppColors.primaryColor),
+            child: Icon(Icons.pets, color: appDesign.appColors.primaryColor),
           ),
           Padding(
             padding: EdgeInsets.only(left: 10),
-            child: Icon(Icons.pets, color: AppColors.primaryColor),
+            child: Icon(Icons.pets, color: appDesign.appColors.primaryColor),
           ),
           Padding(
             padding: EdgeInsets.only(left: 10),
-            child: Icon(Icons.pets, color: AppColors.primaryColor),
+            child: Icon(Icons.pets, color: appDesign.appColors.primaryColor),
           )
           ],)
           

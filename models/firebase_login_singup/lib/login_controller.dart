@@ -60,7 +60,7 @@ class LoginController {
       print("teste");
 
       await auth.signInWithCredential(credential);
-      Modular.to.navigate('/');
+     Modular.to.pushNamed('/', forRoot: true);
     },
     verificationFailed: (FirebaseAuthException e) {
       print(e.message);
@@ -69,7 +69,7 @@ class LoginController {
       verificationIdRecived = verificationId;
       print(verificationId);
       print(resendToken);
-      Modular.to.navigate('/codeVerify');
+      Modular.to.pushNamed('/codeVerify', forRoot: true);
       
     },
     codeAutoRetrievalTimeout: (String verificationId) {

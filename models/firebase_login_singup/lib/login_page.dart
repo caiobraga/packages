@@ -1,5 +1,6 @@
-import 'package:design_system/vetner/design_system.dart';
+import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 import 'login_controller.dart';
 
@@ -18,9 +19,9 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-   
+    final appDesign = Modular.get<AppDesignSystem>();
     return Scaffold(
-      backgroundColor: AppColors.primaryColor,
+      backgroundColor: appDesign.appColors.primaryColor,
       body: SafeArea(
         child: InkWell(
           onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
@@ -36,7 +37,7 @@ class _LoginPageState extends State<LoginPage> {
               Expanded(
                 flex: 3,
                 child: Image.network(
-                  AppImages.logoUrl,
+                  appDesign.appImages.logoUrl,
                   color: Colors.white,
                 ),
               ),
@@ -45,13 +46,13 @@ class _LoginPageState extends State<LoginPage> {
                   child: ListView(
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
-                    children: const [
+                    children: [
                       Text(
                         "Vetners",
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            fontSize: AppFonts.titleFont,
-                            color: AppColors.whiteColor),
+                            fontSize: appDesign.appFonts.titleFont,
+                            color: appDesign.appColors.whiteColor),
                       ),
                     ],
                   )),
@@ -90,9 +91,9 @@ class _LoginPageState extends State<LoginPage> {
                               ),
                             ),
                             filled: true,
-                            prefixIcon: const Icon(
+                            prefixIcon: Icon(
                               Icons.phone_iphone,
-                              color: AppColors.primaryColor,
+                              color: appDesign.appColors.primaryColor,
                             ),
                             hintStyle: TextStyle(color: Colors.grey[800]),
                             hintText: "Insira seu número de telefone",
@@ -116,13 +117,13 @@ class _LoginPageState extends State<LoginPage> {
                               onTap: login,
                               child: Container(
                                 alignment: Alignment.center,
-                                padding: const EdgeInsets.all(16),
+                                padding: EdgeInsets.all(16),
                                 decoration: BoxDecoration(
-                                    color: AppColors.primaryColor,
+                                    color: appDesign.appColors.primaryColor,
                                     borderRadius: BorderRadius.circular(16)),
                                 child:  isLoading
-                                    ? const CircularProgressIndicator(
-                                        color: AppColors.whiteColor,
+                                    ? CircularProgressIndicator(
+                                        color: appDesign.appColors.whiteColor,
                                       )
                                     : const Text(
                                         "Entrar",
