@@ -17,7 +17,13 @@ class AuthPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final viewModel = Modular.get<FirebaseLoginSingupViewModel>();
     final User? user = FirebaseAuth.instance.currentUser;
+    final Stream<User?> userStream = FirebaseAuth.instance.authStateChanges();
 
+    userStream.listen((event) {
+      if(event != null){
+        Modular.to.navigate('/verificationPage');
+      }
+    });
     return user != null? VerificationPage() : LoginPage();
   }
 }
