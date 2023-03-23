@@ -52,8 +52,14 @@ class AppComponents {
     return AppBar(
       automaticallyImplyLeading: automaticallyImplyLeading,
       centerTitle: true,
-      backgroundColor: appDesign.appColors.whiteColor,
+      backgroundColor: appDesign.appColors.primaryColor,
       elevation: 0,
+      leading: BackButton(
+        color: appDesign.appColors.whiteColor,
+        onPressed: () {
+         Navigator.pop(context);
+        },
+      ),
       title: title,
       actions: [
         hasIcon?
