@@ -18,25 +18,27 @@ class ImageFormField extends FormField<Uint8List> {
               children: [
                 
                 image == null
-                    ? ConstrainedBox(
-                        constraints: BoxConstraints.expand(height: 80.0),
-                        child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.stretch,
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: <Widget>[
-                              Expanded(
-                                child: IconButton(
-                                  icon: const Icon(Icons.person, size: 24.0),
-                                  onPressed: () async{
-                                    if (onSelectImage != null) {
-                                     await onSelectImage();
-                                    }
-                                    state.didChange(image);
-                                  
-                                  },
-                                ),
-                              )
-                            ]))
+                    ? GestureDetector(
+                        onTap: () async{
+                          if (onSelectImage != null) {
+                            await onSelectImage();
+                          }
+                          state.didChange(image);
+                    },
+                      child:Container(
+                              decoration: BoxDecoration(
+                              color: Colors.grey[200],
+                              borderRadius:
+                              BorderRadius.circular(120)),
+                              width: 100,
+                              height: 100,
+                              child: Icon(
+                                Icons.photo_camera,
+                            size: 35,
+                            color: Colors.grey[800],
+                          ),
+                        ),
+                     )
                     : OutlinedButton(
                         onPressed: () async{
                           if (onSelectImage != null) {
@@ -44,12 +46,20 @@ class ImageFormField extends FormField<Uint8List> {
                           }
                           state.didChange(image);
                         },
-                        child: Image.memory(
-                          image,
-                          fit: BoxFit.contain,
+                        child: Container(
+                          decoration: BoxDecoration(
+                              color: Colors.grey[200],
+                              borderRadius:
+                              BorderRadius.circular(120)),
+                          width: 100,
+                          height: 100,
+                          child: Image.memory(
+                            image,
+                            fit: BoxFit.contain,
+                          ),
                         ),
                       ),
-                state.hasError
+                    state.hasError
                     ? Text(
                         state.errorText != null ? state.errorText! : "",
                         style: TextStyle(color: Colors.red),
@@ -60,3 +70,4 @@ class ImageFormField extends FormField<Uint8List> {
           },
         );
 }
+
