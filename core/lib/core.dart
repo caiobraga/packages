@@ -10,3 +10,4 @@ export 'utils/double_utils.dart';
 export 'utils/int_utils.dart';
 export 'utils/list_utils.dart';
 export 'utils/feedback.dart';
+export 'types/timestamp.dart';
