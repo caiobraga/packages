@@ -54,12 +54,12 @@ class AppComponents {
       centerTitle: true,
       backgroundColor: appDesign.appColors.primaryColor,
       elevation: 0,
-      leading: BackButton(
+      leading: automaticallyImplyLeading != false ? BackButton(
         color: appDesign.appColors.whiteColor,
         onPressed: () {
          Navigator.pop(context);
         },
-      ),
+      ) : Container(),
       title: title,
       actions: [
         hasIcon?
