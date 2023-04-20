@@ -47,7 +47,7 @@ class AppImages{
 
 
 class AppComponents {
-  static AppBar appBar(Widget title, BuildContext context, {bool hasIcon = true, bool automaticallyImplyLeading = true, IconButton? iconButton} ) {
+  static AppBar appBar(Widget title, BuildContext context, {bool hasIcon = true, bool automaticallyImplyLeading = false, IconButton? iconButton} ) {
     final appDesign = Modular.get<AppDesignSystem>();
     return AppBar(
       automaticallyImplyLeading: automaticallyImplyLeading,
