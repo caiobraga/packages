@@ -10,9 +10,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_modular: ^5.0.3
+  flutter_modular: ^6.0.0-alpha.5
   solid_bottom_sheet: ^0.1.10
-  material_design_icons_flutter: ^5.0.6996
+  material_design_icons_flutter: ^6.0.7096
 
 dev_dependencies:
   flutter_test:
