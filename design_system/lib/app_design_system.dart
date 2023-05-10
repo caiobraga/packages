@@ -47,19 +47,19 @@ class AppImages{
 
 
 class AppComponents {
-  static AppBar appBar(Widget title, BuildContext context, {bool hasIcon = true, bool automaticallyImplyLeading = true, IconButton? iconButton} ) {
+  static AppBar appBar(Widget title, BuildContext context, {bool hasIcon = true, bool automaticallyImplyLeading = false, IconButton? iconButton} ) {
     final appDesign = Modular.get<AppDesignSystem>();
     return AppBar(
       automaticallyImplyLeading: automaticallyImplyLeading,
       centerTitle: true,
       backgroundColor: appDesign.appColors.primaryColor,
       elevation: 0,
-      leading: BackButton(
+      leading: automaticallyImplyLeading != false ? BackButton(
         color: appDesign.appColors.whiteColor,
         onPressed: () {
          Navigator.pop(context);
         },
-      ),
+      ) : Container(),
       title: title,
       actions: [
         hasIcon?
